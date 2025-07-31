@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoMine Store - Магазин майнингового оборудования</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .mining-bg {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .glow-text {
+            text-shadow: 0 0 5px #38b2ac, 0 0 10px #38b2ac;
+        }
+        .mining-chip {
+            background: linear-gradient(145deg, #4a5568, #2d3748);
+            box-shadow: 5px 5px 15px #1a202c, -5px -5px 15px #4a5568;
+        }
+        .hashrate-meter {
+            background: linear-gradient(90deg, #4fd1c5 0%, #38b2ac 50%, #319795 100%);
+        }
+    </style>
+</head>
+<body class="mining-bg text-gray-100 min-h-screen">
+    <!-- Шапка с анимацией -->
+    <header class="bg-gray-900 bg-opacity-90 backdrop-blur-sm sticky top-0 z-50 border-b border-teal-500 border-opacity-30">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-bitcoin text-teal-400 text-2xl"></i>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500">
+                    CryptoMine<span class="text-teal-300">Store</span>
+                </span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#products" class="hover:text-teal-300 transition duration-300">Оборудование</a>
+                <a href="#about" class="hover:text-teal-300 transition duration-300">О нас</a>
+                <a href="#reviews" class="hover:text-teal-300 transition duration-300">Отзывы</a>
+                <a href="#contact" class="hover:text-teal-300 transition duration-300">Контакты</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="relative p-2 text-gray-300 hover:text-white">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </button>
+                <button class="md:hidden text-gray-300 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция с эффектом майнинга -->
+    <section class="relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text">
+                    <span class="text-teal-400">Мощное</span> оборудование для майнинга
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                    Лучшие ASIC-майнеры и видеокарты для максимальной прибыли. Гарантия качества и быстрая доставка по всему миру.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#products" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        Купить сейчас
+                    </a>
+                    <a href="#about" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        Узнать больше
+                    </a>
+                </div>
+                
+                <div class="mt-12 p-6 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-400">Текущая доходность</span>
+                        <span class="text-teal-400 font-bold">$5.42 / день</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                        <div class="hashrate-meter h-2.5 rounded-full" style="width: 78%"></div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2 text-sm text-gray-400">
+                        <span>Bitmain Antminer S19</span>
+                        <span>110 TH/s</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative">
+                <div class="relative z-10">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80" 
+                         alt="Майнинговое оборудование" 
+                         class="rounded-xl shadow-2xl border border-gray-700 transform rotate-1 hover:rotate-0 transition duration-500">
+                </div>
+                <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+                <div class="absolute -top-8 -left-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция продуктов -->
+    <section id="products" class="py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Наше <span class="text-teal-400">оборудование</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Выберите лучшее майнинговое оборудование с оптимальным соотношением цены и производительности
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Карточка продукта 1 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition duration-500 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1620341218513-9e6ddd7c87b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Bitmain Antminer S19 Pro" 
+                             class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            ХИТ ПРОДАЖ
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Bitmain Antminer S19 Pro</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-400 text-sm">4.7 (24 отзыва)</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <p class="text-gray-400 text-sm">Хешрейт</p>
+                                <p class="font-bold text-teal-400">110 TH/s</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Энергопотребление</p>
+                                <p class="font-bold">3250W</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Алгоритм</p>
+                                <p class="font-bold">SHA-256</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Доходность</p>
+                                <p class="font-bold text-green-400">$5.42/день</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">$3,299</span>
+                            <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 flex items-center">
+                                <i class="fas fa-cart-plus mr-2"></i> Купить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Карточка продукта 2 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition duration-500 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1620341218513-9e6ddd7c87b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Whatsminer M50" 
+                             class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Whatsminer M50</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-400 text-sm">4.2 (18 отзывов)</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <p class="text-gray-400 text-sm">Хешрейт</p>
+                                <p class="font-bold text-teal-400">118 TH/s</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Энергопотребление</p>
+                                <p class="font-bold">3276W</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Алгоритм</p>
+                                <p class="font-bold">SHA-256</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Доходность</p>
+                                <p class="font-bold text-green-400">$5.81/день</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">$3,899</span>
+                            <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 flex items-center">
+                                <i class="fas fa-cart-plus mr-2"></i> Купить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Карточка продукта 3 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition duration-500 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1620341218513-9e6ddd7c87b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Avalon A1246" 
+                             class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            НОВИНКА
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Avalon A1246</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-400 text-sm">5.0 (7 отзывов)</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <p class="text-gray-400 text-sm">Хешрейт</p>
+                                <p class="font-bold text-teal-400">90 TH/s</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Энергопотребление</p>
+                                <p class="font-bold">3420W</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Алгоритм</p>
+                                <p class="font-bold">SHA-256</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Доходность</p>
+                                <p class="font-bold text-green-400">$4.43/день</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">$2,799</span>
+                            <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 flex items-center">
+                                <i class="fas fa-cart-plus mr-2"></i> Купить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-teal-500 text-teal-400 hover:bg-teal-500 hover:text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Показать все оборудование
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Почему выбирают <span class="text-teal-400">CryptoMine Store</span>?
+                    </h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        Мы являемся лидерами в поставках профессионального майнингового оборудования с 2016 года. Наши клиенты доверяют нам благодаря прозрачным условиям, гарантии качества и профессиональной поддержке.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Гарантия 12 месяцев</h3>
+                                <p class="text-gray-400">Полная гарантия на все оборудование с возможностью бесплатного ремонта</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                <i class="fas fa-truck text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Быстрая доставка</h3>
+                                <p class="text-gray-400">Отправка в день заказа. Доставка по всему миру за 3-7 рабочих дней</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                <i class="fas fa-headset text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">24/7 Поддержка</h3>
+                                <p class="text-gray-400">Наши специалисты всегда готовы помочь с настройкой и эксплуатацией</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Калькулятор доходности</h3>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-400 mb-2">Оборудование</label>
+                            <select class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                <option>Bitmain Antminer S19 Pro (110 TH/s)</option>
+                                <option>Whatsminer M50 (118 TH/s)</option>
+                                <option>Avalon A1246 (90 TH/s)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-400 mb-2">Стоимость электроэнергии ($/кВт·ч)</label>
+                            <input type="number" value="0.12" step="0.01" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-400 mb-2">Количество оборудования</label>
+                            <input type="number" value="1" min="1" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+                        
+                        <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 mb-6">
+                            Рассчитать доходность
+                        </button>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Доходность в день:</span>
+                                <span class="font-bold text-green-400">$5.42</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Доходность в месяц:</span>
+                                <span class="font-bold text-green-400">$162.60</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Окупаемость:</span>
+                                <span class="font-bold">~20 месяцев</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -z-10 -bottom-8 -right-8 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция отзывов -->
+    <section id="reviews" class="py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Отзывы <span class="text-teal-400">клиентов</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Что говорят наши клиенты о качестве оборудования и сервиса
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Отзыв 1 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей Петров" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Алексей Петров</h3>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Заказал Antminer S19 Pro, доставили за 3 дня. Оборудование работает идеально, хешрейт соответствует заявленному. Поддержка отвечает быстро и по делу. Рекомендую!"
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <i class="far fa-clock mr-1"></i> 2 недели назад
+                    </div>
+                </div>
+                
+                <!-- Отзыв 2 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Елена Смирнова" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Елена Смирнова</h3>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Покупала Whatsminer M50 для своей фермы. Доходность даже немного выше расчетной. Приятно удивила бесплатная экспресс-доставка. Обслуживание на высоте!"
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <i class="far fa-clock mr-1"></i> 1 месяц назад
+                    </div>
+                </div>
+                
+                <!-- Отзыв 3 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Дмитрий Иванов" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Дмитрий Иванов</h3>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Заказал 3 майнера, один пришел с небольшим дефектом вентилятора. Но поддержка оперативно решила вопрос - отправили замену без лишних вопросов. В целом доволен."
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <i class="far fa-clock mr-1"></i> 3 месяца назад
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-teal-500 text-teal-400 hover:bg-teal-500 hover:text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Оставить отзыв
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция контактов -->
+    <section id="contact" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-teal-400">Свяжитесь</span> с нами
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Есть вопросы? Напишите нам, и мы ответим в течение 24 часов
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">Контактная информация</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Адрес</h3>
+                                    <p class="text-gray-400">г. Москва, ул. Майнинговая, 42</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Телефон</h3>
+                                    <p class="text-gray-400">+7 (495) 123-45-67</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Email</h3>
+                                    <p class="text-gray-400">info@cryptominestore.ru</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mining-chip p-3 rounded-lg mr-4 text-teal-400">
+                                    <i class="fas fa-clock text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Часы работы</h3>
+                                    <p class="text-gray-400">Пн-Пт: 9:00 - 21:00<br>Сб-Вс: 10:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-lg font-bold mb-4">Мы в соцсетях</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 hover:bg-teal-600 hover:text-white transition duration-300">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition duration-300">
+                                    <i class="fab fa-vk"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 hover:bg-red-600 hover:text-white transition duration-300">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 hover:bg-blue-400 hover:text-white transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">Форма обратной связи</h3>
+                        
+                        <form>
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Ваше имя</label>
+                                <input type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Иван Иванов">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="example@mail.com">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Телефон</label>
+                                <input type="tel" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="+7 (999) 123-45-67">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Сообщение</label>
+                                <textarea class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 h-32" placeholder="Ваше сообщение..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between mb-8">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-bitcoin text-teal-400 text-2xl"></i>
+                        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500">
+                            CryptoMine<span class="text-teal-300">Store</span>
+                        </span>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">
+                        Лидер в поставках профессионального майнингового оборудования с 2016 года
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Компания</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">О нас</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Блог</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Карьера</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Партнеры</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Помощь</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">FAQ</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Доставка</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Возврат</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Гарантия</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Юридическое</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Политика конфиденциальности</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Условия использования</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-teal-400 transition duration-300">Правовая информация</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    © 2023 CryptoMine Store. Все права защищены.
+                </p>
+                
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6 opacity-70 hover:opacity-100 transition duration-300">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6 opacity-70 hover:opacity-100 transition duration-300">
+                    <img src="https://via.placeholder.com/40x25" alt="Bitcoin" class="h-6 opacity-70 hover:opacity-100 transition duration-300">
+                    <img src="https://via.placeholder.com/40x25" alt="Ethereum" class="h-6 opacity-70 hover:opacity-100 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-teal-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Кнопка "Наверх"
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Анимация при наведении на карточки продуктов
+        const productCards = document.querySelectorAll('.card-hover');
+        productCards.forEach(card => {
+            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        });
+
+        // Имитация изменения курса
+        function updateRates() {
+            const rates = document.querySelectorAll('.hashrate-meter');
+            rates.forEach(rate => {
+                const randomWidth = 70 + Math.floor(Math.random() * 15);
+                rate.style.width = `${randomWidth}%`;
+            });
+            
+            setTimeout(updateRates, 3000);
+        }
+        
+        updateRates();
+    </script>
+</body>
+</html>
